@@ -1,0 +1,16 @@
+version: '3'
+services: 
+    #speficy the different services/apps
+    redis-server:
+        #Use the redis image, same as FROM command on dockerfile
+        image: 'redis'
+    node-app:
+        #automatic container restarts setting to node-app
+        restart: on-failure
+        #build from dockerfile found in root dir
+        build: .
+        #localport:containerport
+        ports:
+            - "4001:8081"
+
+#THIS FILE automatically connects services specified!!!!!
